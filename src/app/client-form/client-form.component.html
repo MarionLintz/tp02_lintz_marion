@@ -1,0 +1,110 @@
+<div class="row form-container">
+    <form class="col s12" name="myForm" ngNativeValidate (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="input-field col s2">
+                <i class="medium material-icons gray-color prefix">person</i>
+                <input name="civilite" type="text" class="validate" pattern="[A-Za-z]*" 
+                    [(ngModel)]="client.civilite" required>
+                <label for="civilite">Civilité</label>
+            </div>
+            <div class="input-field col s5">
+                <input name="nom" type="text" class="validate" pattern="[A-Za-z]*" 
+                    [(ngModel)]="client.nom" required>
+                <label for="nom">Nom</label>
+            </div>
+            <div class="input-field col s4">
+                <input name="prenom" type="text" class="validate" 
+                    [(ngModel)]="client.prenom" pattern="[A-Za-z]*" required>
+                <label for="prenom">Prénom</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s2">
+                <i class="medium material-icons gray-color prefix">home</i>
+                <input name="adresse_num" type="number" class="validate" 
+                    [(ngModel)]="client.adresse_num" required>
+                <label for="adresse_num">N°</label>
+            </div>
+            <div class="input-field col s9">
+                <input name="adresse_rue" type="text" class="validate"
+                    [(ngModel)]="client.adresse_rue" required>
+                <label for="adresse_rue">Rue</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s3 ">
+                <i class="medium material-icons gray-color prefix"></i>
+                <input name="adresse_cp" type="text" pattern="[0-9]{5}" class="validate" 
+                    [(ngModel)]="client.adresse_cp" required>
+                <label for="adresse_cp">Code postal</label>
+            </div>
+            <div class="input-field col s4">
+                <input name="adresse_ville" type="text" class="validate" 
+                    [(ngModel)]="client.adresse_ville" pattern="[A-Za-z]*" required>
+                <label for="adresse_ville">Ville</label>
+            </div>
+            <div class="input-field col s4">
+                <input name="pays" type="text" class="validate" pattern="[A-Za-z]*" 
+                    [(ngModel)]="client.adresse_pays" required>
+                <label for="pays">Pays</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s11">
+                <i class="medium material-icons gray-color prefix">email</i>
+                <input name="email" type="email" class="validate" 
+                    [(ngModel)]="client.email" required>
+                <label for="email">Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s11">
+                <i class="medium material-icons gray-color prefix">phone</i>
+                <input name="phone" type="text" pattern="[0-9 ]{15}" class="validate" 
+                    [ngModel]="client.tel | phoneNumber" (ngModelChange)="client.tel=$event" required>
+                <label for="phone">Numéro de téléphone</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s11">
+                <i class="medium material-icons gray-color prefix">contacts</i>
+                <input name="login" type="text" class="validate" 
+                    [(ngModel)]="client.login" required>
+                <label for="login">Login</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="medium material-icons gray-color prefix"></i>
+
+                <input name="mdp" type="password" class="validate" 
+                    [(ngModel)]="client.password" required appPasswordControl [control]="client.password">
+                <label for="mdp">Mot de passe</label>
+            </div>
+            <div class="input-field col s5">
+                <input name="mdp_conf" type="password" class="validate" 
+                    [(ngModel)]="client.password_conf" required>
+                <label for="mdp_conf">Confirmation</label>
+
+                <span class="helper-text" name="helperConf" *ngIf="!isConfPasswordValid">
+                    Le mot de passe et sa confirmation ne sont pas identiques.
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
